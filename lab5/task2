@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+#define M 3
+#define N 4  
+
+int main() {
+    float A[M][N];  
+    float C[M];     
+    int i, j;
+    printf("Введіть елементи матриці A[%d][%d]:\n", M, N);
+    for(i = 0; i < M; i+=1) {
+        for(j = 0; j < N; j+=1) {
+            printf("A[%d][%d] = ", i+1, j+1);
+            scanf("%f", &A[i][j]);
+        }
+    }
+    for(i = 0; i < M; i+=1) {
+        float max = A[i][0];  
+        float product = 1.0;  
+        for(j = 0; j < N; j+=1) {
+            if(A[i][j] > max) {
+                max = A[i][j];
+            }
+        }
+        for(j = 0; j < N; j+=1) {
+            product *= A[i][j];
+        }
+        C[i] = product / max;
+    }
+    printf("\nВектор C:\n");
+    for(i = 0; i < M; i+=1) {
+        printf("C[%d] = %.2f\n", i+1, C[i]);
+    }
+    return 0;
+}
